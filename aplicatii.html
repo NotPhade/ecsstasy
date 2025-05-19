@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aplicatie Departament</title>
+<link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1338565771860901888/1355248762087280760/ECSTASY.png?ex=682c2284&is=682ad104&hm=00ad27278872fcd3d2786dd90a822f0ecf0382e7194acf2083b618a0df9873c3&=&format=webp&quality=lossless&width=960&height=960">
+
+  <style>
+    /* Stiluri de bază */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4b006e, #7f00ff);
+      color: #eee;
+      margin: 0;
+      display: flex;
+      min-height: 100vh;
+    }
+ 
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: linear-gradient(145deg, #5a008a, #33004d);
+      padding: 30px 25px;
+      border-radius: 0 30px 30px 0;
+      color: #d3baff;
+      position: fixed;
+      height: 100vh;
+    }
+
+    .sidebar img {
+      width: 160px;
+      display: block;
+      margin: 0 auto 20px auto;
+      border-radius: 20px;
+    }
+
+    .sidebar h2 {
+      font-size: 2.7rem;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar ul li {
+      margin: 22px 0;
+    }
+
+    .sidebar ul li a {
+      color: #d3baff;
+      text-decoration: none;
+      font-size: 1.3rem;
+      display: block;
+    }
+
+    .sidebar ul li a:hover {
+      color: #fff;
+    }
+
+    /* Main Content */
+    .main {
+      margin-left: 300px;
+      padding: 40px 50px;
+      flex: 1;
+    }
+
+    /* Formulare */
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+      font-size: 1em;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: #b15eff;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    button:hover {
+      background: #9c4dcc;
+    }
+
+    /* Carduri aplicatii */
+    .aplicatie {
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .aplicatie h3 {
+      margin-bottom: 10px;
+      font-size: 1.5em;
+    }
+
+    .aplicatie p {
+      margin-bottom: 10px;
+    }
+
+    .statusButton {
+      padding: 8px 15px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      margin-top: 10px;
+    }
+
+    .statusButton.acceptat {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .statusButton.respins {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .deleteButton {
+      background-color: #ff9800;
+      color: white;
+      padding: 8px 15px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      margin-top: 10px;
+    }
+
+    /* Ascunde elemente */
+    .hidden {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="https://media.discordapp.net/attachments/1153942954650648657/1373540945961680907/ECSTASY.png?ex=682ac930&is=682977b0&hm=dd74e29dde4609020f2d9a57289e79ec740f8525d711510f86ff5a37f561170b&=&format=webp&quality=lossless&width=958&height=958" alt="Ecstasy Logo" />
+    <h2>Ecstasy</h2>
+    <ul>
+      <li><a href="index.html">Shop</a></li>
+      <li><a href="regulament.html">Regulament</a></li>
+      <li><a href="aplicatii.html">Aplicații</a></li>
+      <li><a href="update.html">Update-uri Recente</a></li>
+      <li><a href="settings.html">Setări</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <h2>Formular Aplicatie Departament  ( Jos vei putea selecta departamentul dorit )  </h2>
+    <form id="departamentForm">
+      <!-- Secțiunea OOC (Out of Character) -->
+      <h3>Informații OOC (Out of Character)</h3>
+      <label for="nume_ooc">Nume: <input name="nume_ooc" required></label>
+      <label for="varsta_ooc">Vârsta: <input name="varsta_ooc" type="number" required></label>
+      <label for="descriere_ooc">Descriere Personală: <textarea name="descriere_ooc" required></textarea></label>
+      <label for="regulament_ooc">Ai citit regulamentul acestui departament? <select name="regulament_ooc" required>
+        <option value="Da">Da</option>
+        <option value="Nu">Nu</option>
+      </select></label>
+
+      <!-- Secțiunea IC (In Character) -->
+      <h3>Informații IC (In Character)</h3>
+      <label for="nume_ic">Nume: <input name="nume_ic" required></label>
+      <label for="varsta_ic">Vârsta: <input name="varsta_ic" type="number" required></label>
+      <label for="descriere_ic">Descriere Personală: <textarea name="descriere_ic" required></textarea></label>
+      <label for="beneficii_ic">Ce beneficii poți aduce acestui departament? <textarea name="beneficii_ic" required></textarea></label>
+
+      <!-- Date de contact -->
+      <label for="discord">Discord (Obligatoriu): <input name="discord" required></label>
+      <label for="email">Email: <input name="email" type="email" required></label>
+
+      <label for="departament">Alege Departamentul: 
+        <select name="departament" id="departamentSelect" required>
+          <option value="Politie">Politie</option>
+          <option value="Medici">Medici</option>
+          <option value="Mecanici">Mecanici</option>
+        </select>
+      </label>
+
+      <button type="submit">Trimite Aplicatia</button>
+    </form>
+
+    <h2 style="margin-top:40px;">Lider Login</h2>
+    <select id="departamentLogin">
+      <option value="Politie">Politie</option>
+      <option value="Medici">Medici</option>
+      <option value="Mecanici">Mecanici</option>
+    </select>
+    <input id="adminPass" type="password" placeholder="Introdu parola lider">
+    <button onclick="adminLogin()">Login</button>
+
+    <div id="liderPanel" class="lider-panel hidden">
+      <h2>Aplicatii Departament</h2>
+      <button onclick="afiseazaAplicatii()">Vezi Aplicatii</button>
+      <div id="listaAplicatii"></div>
+    </div>
+  </div>
+
+  <script>
+    const paroleDepartamente = {
+      "Politie": "EcstasyPYKANOVANI",
+      "Medici": "EcstasyMEDICSTROKYNG",
+      "Mecanici": "EcstasyMECANICISTROKANKGYG"
+    };
+
+    // Formularul de aplicație departament
+    document.getElementById("departamentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form));
+      data.status = "In asteptare";
+      data.departament = document.getElementById("departamentSelect").value;
+      localStorage.setItem(Date.now(), JSON.stringify(data));
+      form.reset();
+    });
+
+    // Funcția de login pentru lider
+    function adminLogin() {
+      const departamentSelect = document.getElementById("departamentLogin").value;
+      const input = document.getElementById("adminPass").value;
+      const parolaCorecta = paroleDepartamente[departamentSelect];
+
+      if (input === parolaCorecta) {
+        document.getElementById("liderPanel").classList.remove("hidden");
+        afiseazaAplicatii(departamentSelect);
+      } else {
+        alert("Parola gresita!");
+      }
+    }
+
+   function afiseazaAplicatii(departament) {
+  const container = document.getElementById("listaAplicatii");
+  container.innerHTML = ""; // Resetare
+
+  Object.entries(localStorage).forEach(([key, val]) => {
+    if (isValidJson(val)) {
+      const app = JSON.parse(val);
+      if (app.departament === departament) {
+        const div = document.createElement("div");
+        div.className = "aplicatie";
+
+        // Setare status și culoare
+        let statusText = "ÎN AȘTEPTARE";
+        let statusColor = "#999";
+        if (app.status === "acceptat") {
+          statusText = "ACCEPTAT";
+          statusColor = "#4CAF50";
+        } else if (app.status === "respins") {
+          statusText = "RESPINS";
+          statusColor = "#f44336";
+        }
+
+        div.innerHTML = `
+          <div style="text-align:center; font-size: 1.4em; font-weight:bold; padding: 10px; background-color:${statusColor}; color: white; border-radius: 6px; margin-bottom: 10px;">
+            STATUS: ${statusText}
+          </div>
+
+          <h3>Aplicație Departament: ${app.departament}</h3>
+
+          <h4>Informații OOC (Out of Character)</h4>
+          <p><strong>Nume (OOC):</strong> ${app.nume_ooc || 'N/A'}</p>
+          <p><strong>Vârstă (OOC):</strong> ${app.varsta_ooc || 'N/A'}</p>
+          <p><strong>Descriere Personală:</strong> ${app.descriere_ooc || 'N/A'}</p>
+          <p><strong>Ai citit regulamentul:</strong> ${app.regulament_ooc || 'N/A'}</p>
+
+          <h4>Informații IC (In Character)</h4>
+          <p><strong>Nume (IC):</strong> ${app.nume_ic || 'N/A'}</p>
+          <p><strong>Vârstă (IC):</strong> ${app.varsta_ic || 'N/A'}</p>
+          <p><strong>Descriere Personală:</strong> ${app.descriere_ic || 'N/A'}</p>
+          <p><strong>Beneficii pentru departament:</strong> ${app.beneficii_ic || 'N/A'}</p>
+
+          <h4>Date Contact:</h4>
+          <p><strong>Discord:</strong> ${app.discord || 'N/A'}</p>
+          <p><strong>Email:</strong> ${app.email || 'N/A'}</p>
+
+          <div class="statusButton acceptat" onclick="actualizeazaStatus('${key}', 'acceptat')">Acceptă</div>
+          <div class="statusButton respins" onclick="actualizeazaStatus('${key}', 'respins')">Respinge</div>
+          <div class="deleteButton" onclick="stergeAplicatie('${key}')">Șterge Aplicația</div>
+        `;
+
+        container.appendChild(div);
+      }
+    }
+  });
+}
+
+    // Funcție pentru a verifica dacă un string este JSON valid
+    function isValidJson(str) {
+      try {
+        JSON.parse(str);
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+
+    // Funcție pentru a actualiza statusul aplicației
+    function actualizeazaStatus(key, status) {
+      const app = JSON.parse(localStorage.getItem(key));
+      app.status = status;
+      localStorage.setItem(key, JSON.stringify(app));
+      afiseazaAplicatii(document.getElementById("departamentLogin").value);
+    }
+
+    // Funcție pentru a șterge aplicația
+    function stergeAplicatie(key) {
+      localStorage.removeItem(key);
+      afiseazaAplicatii(document.getElementById("departamentLogin").value);
+    }
+  </script>
+</body>
+</html>
